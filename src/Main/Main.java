@@ -5,18 +5,27 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        char goAgain;
 
+        do {
+            generator();
+            System.out.printf("Want to generate one more? 's' for yes: ");
+            goAgain = sc.next().charAt(0);
+        }while (goAgain == 's');
+    }
+
+    public static void generator() {
+        Scanner sc = new Scanner(System.in);
+        
         //Variables
-        int length, num, amountDesire=0;
+        int length, num;
         char uppercase, lowercase, numbers, symbols;
-        String password = "", pwUpper="", pwLower="", pwNumber="", pwSymbol="";
+        String password = "";
         Random r = new Random();
-        int[] desire = {0,0,0,0};
         String uAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lAlphabet = "abcdefghijklmnopqrstuvwxyz";
         String sNumbers = "1234567890";
-        String sSymbols = "!@#$%&*+_-<>|/";
-
+        String sSymbols = "!@#$%&*+_-<>";
 
         //Input
         System.out.printf("Informe o tamanho que deseja: ");
@@ -31,56 +40,42 @@ public class Main {
         symbols = sc.next().charAt(0);
 
         //Generator
-        if (uppercase == 's'){
-            desire[0] = 1;
-        }
-        if (lowercase == 's'){
-            desire[1] = 1;
-        }
-        if (numbers == 's'){
-            desire[2] = 1;
-        }
-        if (symbols == 's'){
-            desire[3] = 1;
-        }
-
-        for (int i=0; i<4; i++){
-            if (desire[i] == 1){
-                amountDesire++;
+        while (password.length() < length){
+            if (password.length() < length)
+            {
+                if (uppercase == 's')
+                {
+                    num = r.nextInt(uAlphabet.length());
+                    password += uAlphabet.charAt(num);
+                }
             }
-        }
-        int numberLoop = length/amountDesire;
-
-        if (uppercase == 's')
-        {
-            for (int i=0; i<=numberLoop; i++){
-                num = r.nextInt(uAlphabet.length());
-                pwUpper += uAlphabet.charAt(num);
+            if (password.length() < length)
+            {
+                if (lowercase == 's')
+                {
+                    num = r.nextInt(lAlphabet.length());
+                    password += lAlphabet.charAt(num);
+                }
             }
-        }
-        if (lowercase == 's')
-        {
-            for (int i=0; i<=numberLoop; i++){
-                num = r.nextInt(lAlphabet.length());
-                pwLower += lAlphabet.charAt(num);
+            if (password.length() < length)
+            {
+                if (numbers == 's')
+                {
+                    num = r.nextInt(sNumbers.length());
+                    password += sNumbers.charAt(num);
+                }
             }
-        }
-        if (numbers == 's')
-        {
-            for (int i=0; i<=numberLoop; i++){
-                num = r.nextInt(sNumbers.length());
-                pwNumber += sNumbers.charAt(num);
-            }
-        }
-        if (symbols == 's')
-        {
-            for (int i=0; i<=numberLoop; i++){
-                num = r.nextInt(sSymbols.length());
-                pwSymbol += sSymbols.charAt(num);
+            if (password.length() < length)
+            {
+                if (symbols == 's')
+                {
+                    num = r.nextInt(sSymbols.length());
+                    password += sSymbols.charAt(num);
+                }
             }
         }
 
-        password = pwUpper + pwLower + pwNumber + pwSymbol;
+        //Output
         System.out.println(password);
     }
 }
