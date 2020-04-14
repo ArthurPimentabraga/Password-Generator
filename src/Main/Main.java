@@ -9,14 +9,16 @@ public class Main {
 
         do {
             generator();
-            System.out.printf("Want to generate one more? 's' for yes: ");
+            System.out.printf("\nWant to generate another password? 's' for yes: ");
             goAgain = sc.next().charAt(0);
+            System.out.println("-----------------------------------------");
         }while (goAgain == 's');
     }
 
     public static void generator() {
         Scanner sc = new Scanner(System.in);
-        
+        Save save = new Save();
+
         //Variables
         int length, num;
         char uppercase, lowercase, numbers, symbols;
@@ -28,7 +30,7 @@ public class Main {
         String sSymbols = "!@#$%&*+_-<>";
 
         //Input
-        System.out.printf("Informe o tamanho que deseja: ");
+        System.out.printf("How many characters do you want?");
         length = sc.nextInt();
         System.out.printf("Include uppercase letter? 's' for yes: ");
         uppercase = sc.next().charAt(0);
@@ -77,5 +79,12 @@ public class Main {
 
         //Output
         System.out.println(password);
+
+        //Save
+        System.out.printf("Do you want save the password? 's' for yes: ");
+        char confirmSave = sc.next().charAt(0);
+        if (confirmSave == 's'){
+            save.saveFile(password);
+        }
     }
 }
