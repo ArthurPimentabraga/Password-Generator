@@ -1,6 +1,8 @@
 package Main;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,42 +44,87 @@ public class Main {
         symbols = sc.next().charAt(0);
 
         //Generator
-        while (password.length() < length){
-            if (password.length() < length)
+        char[] pwd = new char[length];
+        Integer[] local = new Integer[length];
+        Random r2 = new Random();
+        int varRandom;
+        int count = 0;
+        while (count < length){
+            if (count < length)
             {
                 if (uppercase == 's')
                 {
+                    varRandom = r2.nextInt(length);
+
+                    List<Integer> list = Arrays.asList(local);
+                    while (list.contains(varRandom)){
+                        varRandom = r2.nextInt(length);
+                    }
+
                     num = r.nextInt(uAlphabet.length());
-                    password += uAlphabet.charAt(num);
+                    pwd[varRandom] = uAlphabet.charAt(num);
+                    local[count] = varRandom;
+                    count++;
                 }
             }
-            if (password.length() < length)
+            if (count < length)
             {
                 if (lowercase == 's')
                 {
+                    varRandom = r2.nextInt(length);
+
+                    List<Integer> list = Arrays.asList(local);
+                    while (list.contains(varRandom)){
+                        varRandom = r2.nextInt(length);
+                    }
+
                     num = r.nextInt(lAlphabet.length());
-                    password += lAlphabet.charAt(num);
+                    pwd[varRandom] = lAlphabet.charAt(num);
+                    local[count] = varRandom;
+                    count++;
                 }
             }
-            if (password.length() < length)
+            if (count < length)
             {
                 if (numbers == 's')
                 {
+                    varRandom = r2.nextInt(length);
+
+                    List<Integer> list = Arrays.asList(local);
+                    while (list.contains(varRandom)){
+                        varRandom = r2.nextInt(length);
+                    }
+
                     num = r.nextInt(sNumbers.length());
-                    password += sNumbers.charAt(num);
+                    pwd[varRandom] = sNumbers.charAt(num);
+                    local[count] = varRandom;
+                    count++;
                 }
             }
-            if (password.length() < length)
+            if (count < length)
             {
                 if (symbols == 's')
                 {
+                    varRandom = r2.nextInt(length);
+
+                    List<Integer> list = Arrays.asList(local);
+                    while (list.contains(varRandom)){
+                        varRandom = r2.nextInt(length);
+                    }
+
                     num = r.nextInt(sSymbols.length());
-                    password += sSymbols.charAt(num);
+                    pwd[varRandom] = sSymbols.charAt(num);
+                    local[count] = varRandom;
+                    count++;
                 }
             }
         }
 
         //Output
+        //System.out.println(Arrays.toString(pwd));
+        for (int i=0; i<pwd.length; i++){
+            password += pwd[i];
+        }
         System.out.println(password);
 
         //Save
