@@ -7,131 +7,52 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        char goAgain;
+        Generator g = new Generator();
+        int choose;
+        String menu = "1- Criar uma senha || 2- Visualizar senhas já criadas || 3- Sair";
+
+        asciiArt();
 
         do {
-            generator();
-            System.out.printf("\nWant to generate another password? 's' for yes: ");
-            goAgain = sc.next().charAt(0);
-            System.out.println("-----------------------------------------");
-        }while (goAgain == 's');
+            //Menu
+            for (int i=0; i <= menu.length(); i++){
+                System.out.printf("-");
+            }
+            System.out.println("\nChoose a number for the desired action");
+            System.out.println(menu);
+            System.out.printf("->");
+            choose = sc.nextInt();
+            for (int i=0; i <= menu.length(); i++){
+                System.out.printf("-");
+            }
+
+            if (choose == 1) g.generator();
+            else if(choose == 2) System.out.println("\nFunção não implementada ainda!");
+            else System.out.println("\nThanks for used my software!\nI hope that you enjoyed! :)\nBy Arthur Pimenta Braga");
+
+        }while (choose != 3);
     }
 
-    public static void generator() {
-        Scanner sc = new Scanner(System.in);
-        Save save = new Save();
-
-        //Variables
-        int length, num;
-        char uppercase, lowercase, numbers, symbols;
-        String password = "";
-        Random r = new Random();
-        String uAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String lAlphabet = "abcdefghijklmnopqrstuvwxyz";
-        String sNumbers = "1234567890";
-        String sSymbols = "!@#$%&*+_-<>";
-
-        //Input
-        System.out.printf("How many characters do you want?");
-        length = sc.nextInt();
-        System.out.printf("Include uppercase letter? 's' for yes: ");
-        uppercase = sc.next().charAt(0);
-        System.out.printf("Include lowercase letter? 's' for yes: ");
-        lowercase = sc.next().charAt(0);
-        System.out.printf("Include numbers? 's' for yes: ");
-        numbers = sc.next().charAt(0);
-        System.out.printf("Include symbols? 's' for yes: ");
-        symbols = sc.next().charAt(0);
-
-        //Generator
-        char[] pwd = new char[length];
-        Integer[] local = new Integer[length];
-        Random r2 = new Random();
-        int varRandom;
-        int count = 0;
-        while (count < length){
-            if (count < length)
-            {
-                if (uppercase == 's')
-                {
-                    varRandom = r2.nextInt(length);
-
-                    List<Integer> list = Arrays.asList(local);
-                    while (list.contains(varRandom)){
-                        varRandom = r2.nextInt(length);
-                    }
-
-                    num = r.nextInt(uAlphabet.length());
-                    pwd[varRandom] = uAlphabet.charAt(num);
-                    local[count] = varRandom;
-                    count++;
-                }
-            }
-            if (count < length)
-            {
-                if (lowercase == 's')
-                {
-                    varRandom = r2.nextInt(length);
-
-                    List<Integer> list = Arrays.asList(local);
-                    while (list.contains(varRandom)){
-                        varRandom = r2.nextInt(length);
-                    }
-
-                    num = r.nextInt(lAlphabet.length());
-                    pwd[varRandom] = lAlphabet.charAt(num);
-                    local[count] = varRandom;
-                    count++;
-                }
-            }
-            if (count < length)
-            {
-                if (numbers == 's')
-                {
-                    varRandom = r2.nextInt(length);
-
-                    List<Integer> list = Arrays.asList(local);
-                    while (list.contains(varRandom)){
-                        varRandom = r2.nextInt(length);
-                    }
-
-                    num = r.nextInt(sNumbers.length());
-                    pwd[varRandom] = sNumbers.charAt(num);
-                    local[count] = varRandom;
-                    count++;
-                }
-            }
-            if (count < length)
-            {
-                if (symbols == 's')
-                {
-                    varRandom = r2.nextInt(length);
-
-                    List<Integer> list = Arrays.asList(local);
-                    while (list.contains(varRandom)){
-                        varRandom = r2.nextInt(length);
-                    }
-
-                    num = r.nextInt(sSymbols.length());
-                    pwd[varRandom] = sSymbols.charAt(num);
-                    local[count] = varRandom;
-                    count++;
-                }
-            }
-        }
-
-        //Output
-        //System.out.println(Arrays.toString(pwd));
-        for (int i=0; i<pwd.length; i++){
-            password += pwd[i];
-        }
-        System.out.println(password);
-
-        //Save
-        System.out.printf("Do you want save the password? 's' for yes: ");
-        char confirmSave = sc.next().charAt(0);
-        if (confirmSave == 's'){
-            save.saveFile(password);
-        }
+    public static void asciiArt(){
+        System.out.println("                            ......                      ");
+        System.out.println("                        'cx0XXNNNX0xc'                  ");
+        System.out.println("                      'xXMWXOkxxkOXWMXx'                ");
+        System.out.println("                     :KMNk:.      .:kNMK:               ");
+        System.out.println("                    ,KMXl.          .lXMK,              ");
+        System.out.println("                    lWWx.            .xWNl              ");
+        System.out.println("                    oWWo              oWWo              ");
+        System.out.println("                    oWWo              oWWo              ");
+        System.out.println("               'ccclOWWOlcccccclccccclOWW0lccc'         ");
+        System.out.println("              ,0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM0,        ");
+        System.out.println("              ;XMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMX;        ");
+        System.out.println("              ;XMMMMMMMMMMMMWNXXNWMMMMMMMMMMMMX;        ");
+        System.out.println("              ;XMMMMMMMMMMMKl'..'lKMMMMMMMMMMMX;        ");
+        System.out.println("              ;XMMMMMMMMMMWo      dWMMMMMMMMMMX;        ");
+        System.out.println("              ;XMMMMMMMMMMMK:.  .:KMMMMMMMMMMMX;        ");
+        System.out.println("              ;XMMMMMMMMMMMMK,  ,KMMMMMMMMMMMMX;        ");
+        System.out.println("              ;XMMMMMMMMMMMMK;  ;KMMMMMMMMMMMMX;        ");
+        System.out.println("              ;XMMMMMMMMMMMMNkllkNMMMMMMMMMMMMX;        ");
+        System.out.println("              ,KMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK,        ");
+        System.out.println("               ;oddddddddddddddddddddddddddddo;         ");
     }
 }

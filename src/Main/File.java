@@ -2,10 +2,10 @@ package Main;
 import java.io.*;
 import java.io.FileWriter;
 
-public class Save {
-    public static void saveFile(String pwd){
+public class File {
+    public static void writeFile(String pwd){
         try {
-            File pwdFile = new File("Password.txt");
+            java.io.File pwdFile = new java.io.File("Password.txt");
             if (pwdFile.createNewFile()){
                 System.out.println("File saved: "+pwdFile);
             }
@@ -20,5 +20,8 @@ public class Save {
             System.out.printf("Saving error!");
             e.printStackTrace();
         }
+    }
+    public static void readFile(){
+
     }
 }
