@@ -1,6 +1,7 @@
 package Main;
 import java.io.*;
 import java.io.FileWriter;
+import java.util.Scanner;
 
 public class File {
     public static void writeFile(String pwd){
@@ -22,6 +23,16 @@ public class File {
         }
     }
     public static void readFile(){
-
+        try {
+            java.io.File pwdFile = new java.io.File("Password.txt");
+            Scanner myReader = new Scanner(pwdFile);
+            while (myReader.hasNextLine()){
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
     }
 }

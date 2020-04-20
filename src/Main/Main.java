@@ -7,9 +7,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        File file = new File();
         Generator g = new Generator();
         int choose;
-        String menu = "1- Criar uma senha || 2- Visualizar senhas já criadas || 3- Sair";
+        String menu = "1- Create a password || 2- View passwords already created || 3- Exit";
 
         asciiArt();
 
@@ -25,10 +26,10 @@ public class Main {
             for (int i=0; i <= menu.length(); i++){
                 System.out.printf("-");
             }
-
+            System.out.printf("\n");
             if (choose == 1) g.generator();
-            else if(choose == 2) System.out.println("\nFunção não implementada ainda!");
-            else System.out.println("\nThanks for used my software!\nI hope that you enjoyed! :)\nBy Arthur Pimenta Braga");
+            else if(choose == 2) file.readFile();
+            else System.out.println("Thanks for used my software!\nI hope that you enjoyed! :)\nBy Arthur Pimenta Braga");
 
         }while (choose != 3);
     }
@@ -41,10 +42,7 @@ public class Main {
         System.out.println("                    ,KMXl.          .lXMK,              ");
         System.out.println("                    lWWx.            .xWNl              ");
         System.out.println("                    oWWo              oWWo              ");
-        System.out.println("                    oWWo              oWWo              ");
         System.out.println("               'ccclOWWOlcccccclccccclOWW0lccc'         ");
-        System.out.println("              ,0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM0,        ");
-        System.out.println("              ;XMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMX;        ");
         System.out.println("              ;XMMMMMMMMMMMMWNXXNWMMMMMMMMMMMMX;        ");
         System.out.println("              ;XMMMMMMMMMMMKl'..'lKMMMMMMMMMMMX;        ");
         System.out.println("              ;XMMMMMMMMMMWo      dWMMMMMMMMMMX;        ");
@@ -52,7 +50,6 @@ public class Main {
         System.out.println("              ;XMMMMMMMMMMMMK,  ,KMMMMMMMMMMMMX;        ");
         System.out.println("              ;XMMMMMMMMMMMMK;  ;KMMMMMMMMMMMMX;        ");
         System.out.println("              ;XMMMMMMMMMMMMNkllkNMMMMMMMMMMMMX;        ");
-        System.out.println("              ,KMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK,        ");
         System.out.println("               ;oddddddddddddddddddddddddddddo;         ");
     }
 }

@@ -20,7 +20,7 @@ public class Generator {
         String sSymbols = "!@#$%&*+_-<>";
 
         //Input
-        System.out.printf("\nHow many characters do you want?");
+        System.out.printf("How many characters do you want?");
         length = sc.nextInt();
         System.out.printf("Include uppercase letter? 's' for yes: ");
         uppercase = sc.next().charAt(0);
