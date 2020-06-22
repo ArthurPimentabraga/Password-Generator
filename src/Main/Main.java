@@ -10,23 +10,30 @@ public class Main {
         File file = new File();
         Generator g = new Generator();
         int choose;
-        String menu = "1- Create a password || 2- View passwords already created || 3- Exit";
-
+        String menu = "| 1- Create a password || 2- View passwords already created || 3- Exit |";
+        String instruction = "| Choose a number for the desired action";
         asciiArt();
 
         do {
             //Menu
-            for (int i=0; i <= menu.length(); i++){
+            for (int i=0; i < menu.length(); i++){
                 System.out.printf("-");
             }
-            System.out.println("\nChoose a number for the desired action");
-            System.out.println(menu);
-            System.out.printf("->");
+
+            System.out.printf("\n"+instruction);
+
+            for (int i=1; i < menu.length() - instruction.length(); i++){
+                System.out.printf(" ");
+            }
+
+            System.out.println("|\n"+menu);
+
+            for (int i=0; i < menu.length(); i++){
+                System.out.printf("-");
+            }
+            System.out.printf("\n-> ");
             choose = sc.nextInt();
-            for (int i=0; i <= menu.length(); i++){
-                System.out.printf("-");
-            }
-            System.out.printf("\n");
+
             if (choose == 1) g.generator();
             else if(choose == 2) file.readFile();
             else System.out.println("Thanks for used my software!\nI hope that you enjoyed! :)\nBy Arthur Pimenta Braga");
